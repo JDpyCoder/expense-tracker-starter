@@ -1,5 +1,15 @@
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 
+const CATEGORY_COLORS = {
+  food: "#e8743b",
+  housing: "#3b7dd8",
+  utilities: "#19a979",
+  transport: "#945ecf",
+  entertainment: "#e24d7a",
+  salary: "#13a4b4",
+  other: "#8a8f98",
+};
+
 function SpendingChart({ transactions }) {
   const totals = {};
   transactions
@@ -8,7 +18,11 @@ function SpendingChart({ transactions }) {
       totals[t.category] = (totals[t.category] || 0) + t.amount;
     });
 
-  const data = Object.entries(totals).map(([category, total]) => ({ category, total }));
+  const data = Object.entries(totals).map(([category, total]) => ({
+    category,
+    total,
+    fill: CATEGORY_COLORS[category] ?? CATEGORY_COLORS.other,
+  }));
 
   return (
     <div className="spending-chart">
@@ -22,7 +36,7 @@ function SpendingChart({ transactions }) {
             <XAxis dataKey="category" />
             <YAxis tickFormatter={v => `$${v}`} />
             <Tooltip formatter={v => `$${v}`} />
-            <Bar dataKey="total" name="Spent" fill="#d9534f" />
+            <Bar dataKey="total" name="Spent" />
           </BarChart>
         </ResponsiveContainer>
       )}

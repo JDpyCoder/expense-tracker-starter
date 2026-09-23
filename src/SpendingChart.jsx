@@ -31,12 +31,27 @@ function SpendingChart({ transactions }) {
         <p>No expenses yet.</p>
       ) : (
         <ResponsiveContainer width="100%" height={260}>
-          <BarChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="category" />
-            <YAxis tickFormatter={v => `$${v}`} />
-            <Tooltip formatter={v => `$${v}`} />
-            <Bar dataKey="total" name="Spent" />
+          <BarChart data={data} margin={{ top: 8, right: 4, left: -8, bottom: 0 }}>
+            <CartesianGrid stroke="#e3e9e6" vertical={false} />
+            <XAxis
+              dataKey="category"
+              tickLine={false}
+              axisLine={{ stroke: "#d5ddd9" }}
+              tick={{ fill: "#5f726c", fontSize: 13 }}
+              tickFormatter={c => c.charAt(0).toUpperCase() + c.slice(1)}
+            />
+            <YAxis
+              tickLine={false}
+              axisLine={false}
+              tick={{ fill: "#5f726c", fontSize: 13 }}
+              tickFormatter={v => `$${v}`}
+            />
+            <Tooltip
+              formatter={v => `$${v}`}
+              cursor={{ fill: "#edf1ee" }}
+              contentStyle={{ border: "1px solid #d5ddd9", borderRadius: 8, fontFamily: "Manrope, sans-serif" }}
+            />
+            <Bar dataKey="total" name="Spent" radius={[6, 6, 0, 0]} maxBarSize={56} />
           </BarChart>
         </ResponsiveContainer>
       )}

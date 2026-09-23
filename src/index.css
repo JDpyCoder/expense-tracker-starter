@@ -1,3 +1,16 @@
+:root {
+  --paper: #edf1ee;
+  --sheet: #ffffff;
+  --ink: #173a32;
+  --muted: #5f726c;
+  --hairline: #d5ddd9;
+  --income: #1d7a56;
+  --expense: #b3413a;
+  --radius-panel: 14px;
+  --radius-control: 8px;
+  color-scheme: light;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +18,28 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  font-family: "Manrope", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  background-color: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
 }

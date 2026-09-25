@@ -8,15 +8,24 @@ function TransactionForm({ categories, onAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!description || !amount) return;
+    const value = Number(amount);
+    if (!description || !(value > 0)) return;
+
+    // Local calendar date; toISOString() would give the UTC date.
+    const now = new Date();
+    const date = [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, '0'),
+      String(now.getDate()).padStart(2, '0'),
+    ].join('-');
 
     onAdd({
       id: Date.now(),
       description,
-      amount: Number(amount),
+      amount: value,
       type,
       category,
-      date: new Date().toISOString().split('T')[0],
+      date,
     });
 
     setDescription("");

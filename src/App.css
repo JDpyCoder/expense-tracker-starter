@@ -171,7 +171,7 @@ form select,
   padding-right: 34px;
   text-transform: capitalize;
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%235f726c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238ea39b' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
 }
@@ -192,7 +192,7 @@ form select:focus-visible,
 .filters select:focus-visible {
   outline: none;
   border-color: var(--ink);
-  box-shadow: 0 0 0 3px rgba(23, 58, 50, 0.15);
+  box-shadow: 0 0 0 3px rgba(226, 235, 230, 0.16);
 }
 
 /* ---------- Add transaction form ---------- */
@@ -226,7 +226,7 @@ form button {
 }
 
 form button:hover {
-  background: #0f2a24;
+  background: #ffffff;
 }
 
 /* ---------- Transactions ---------- */
@@ -266,7 +266,7 @@ tbody tr:last-child td {
 }
 
 tbody tr:hover {
-  background: #f5f8f6;
+  background: #1c312b;
 }
 
 td:first-child {

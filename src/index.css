@@ -1,14 +1,14 @@
 :root {
-  --paper: #edf1ee;
-  --sheet: #ffffff;
-  --ink: #173a32;
-  --muted: #5f726c;
-  --hairline: #d5ddd9;
-  --income: #1d7a56;
-  --expense: #b3413a;
+  --paper: #0e1c18;
+  --sheet: #162823;
+  --ink: #e2ebe6;
+  --muted: #8ea39b;
+  --hairline: #29403a;
+  --income: #4fc596;
+  --expense: #ee8174;
   --radius-panel: 14px;
   --radius-control: 8px;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 * {

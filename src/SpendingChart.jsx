@@ -32,24 +32,25 @@ function SpendingChart({ transactions }) {
       ) : (
         <ResponsiveContainer width="100%" height={260}>
           <BarChart data={data} margin={{ top: 8, right: 4, left: -8, bottom: 0 }}>
-            <CartesianGrid stroke="#e3e9e6" vertical={false} />
+            <CartesianGrid stroke="#223731" vertical={false} />
             <XAxis
               dataKey="category"
               tickLine={false}
-              axisLine={{ stroke: "#d5ddd9" }}
-              tick={{ fill: "#5f726c", fontSize: 13 }}
+              axisLine={{ stroke: "#29403a" }}
+              tick={{ fill: "#8ea39b", fontSize: 13 }}
               tickFormatter={c => c.charAt(0).toUpperCase() + c.slice(1)}
             />
             <YAxis
               tickLine={false}
               axisLine={false}
-              tick={{ fill: "#5f726c", fontSize: 13 }}
+              tick={{ fill: "#8ea39b", fontSize: 13 }}
               tickFormatter={v => `$${v}`}
             />
             <Tooltip
               formatter={v => `$${v}`}
-              cursor={{ fill: "#edf1ee" }}
-              contentStyle={{ border: "1px solid #d5ddd9", borderRadius: 8, fontFamily: "Manrope, sans-serif" }}
+              cursor={{ fill: "#1c312b" }}
+              labelStyle={{ color: "#e2ebe6", fontWeight: 700 }}
+              contentStyle={{ background: "#162823", color: "#e2ebe6", border: "1px solid #29403a", borderRadius: 8, fontFamily: "Manrope, sans-serif" }}
             />
             <Bar dataKey="total" name="Spent" radius={[6, 6, 0, 0]} maxBarSize={56} />
           </BarChart>

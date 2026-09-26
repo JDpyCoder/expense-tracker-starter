@@ -213,6 +213,16 @@ form input[type="number"] {
   font-variant-numeric: tabular-nums;
 }
 
+form input[aria-invalid="true"] {
+  border-color: var(--expense);
+}
+
+.form-error {
+  grid-column: 1 / -1;
+  color: var(--expense);
+  font-size: 14px;
+}
+
 form button {
   height: 44px;
   margin-top: 4px;

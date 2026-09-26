@@ -1,4 +1,5 @@
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { formatMoney } from './formatMoney.js'
 
 const CATEGORY_COLORS = {
   food: "#e8743b",
@@ -47,7 +48,7 @@ function SpendingChart({ transactions }) {
               tickFormatter={v => `$${v}`}
             />
             <Tooltip
-              formatter={v => `$${v}`}
+              formatter={v => formatMoney(v)}
               cursor={{ fill: "#1c312b" }}
               labelStyle={{ color: "#e2ebe6", fontWeight: 700 }}
               contentStyle={{ background: "#162823", color: "#e2ebe6", border: "1px solid #29403a", borderRadius: 8, fontFamily: "Manrope, sans-serif" }}

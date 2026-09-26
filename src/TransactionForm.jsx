@@ -5,11 +5,18 @@ function TransactionForm({ categories, onAdd }) {
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("expense");
   const [category, setCategory] = useState("food");
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const text = description.trim();
     const value = Number(amount);
-    if (!description || !(value > 0)) return;
+    const missing = { description: !text, amount: !(value > 0) };
+    if (missing.description || missing.amount) {
+      setError(missing);
+      return;
+    }
+    setError(null);
 
     // Local calendar date; toISOString() would give the UTC date.
     const now = new Date();
@@ -21,7 +28,7 @@ function TransactionForm({ categories, onAdd }) {
 
     onAdd({
       id: Date.now(),
-      description,
+      description: text,
       amount: value,
       type,
       category,
@@ -34,6 +41,15 @@ function TransactionForm({ categories, onAdd }) {
     setCategory("food");
   };
 
+  let errorMessage = null;
+  if (error?.description && error?.amount) {
+    errorMessage = "Please enter a description and an amount.";
+  } else if (error?.description) {
+    errorMessage = "Please enter a description.";
+  } else if (error?.amount) {
+    errorMessage = "Please enter an amount greater than 0.";
+  }
+
   return (
     <div className="add-transaction">
       <h2>Add Transaction</h2>
@@ -41,12 +57,16 @@ function TransactionForm({ categories, onAdd }) {
         <input
           type="text"
           placeholder="Description"
+          aria-invalid={error?.description || undefined}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         <input
           type="number"
+          step="0.01"
+          min="0.01"
           placeholder="Amount"
+          aria-invalid={error?.amount || undefined}
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
@@ -59,6 +79,9 @@ function TransactionForm({ categories, onAdd }) {
             <option key={cat} value={cat}>{cat}</option>
           ))}
         </select>
+        {errorMessage && (
+          <p className="form-error" role="alert">{errorMessage}</p>
+        )}
         <button type="submit">Add</button>
       </form>
     </div>

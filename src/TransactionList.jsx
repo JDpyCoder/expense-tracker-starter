@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { formatMoney } from './formatMoney.js'
 
 function TransactionList({ transactions, categories, onDelete }) {
   const [filterType, setFilterType] = useState("all");
@@ -46,7 +47,7 @@ function TransactionList({ transactions, categories, onDelete }) {
               <td>{t.description}</td>
               <td>{t.category}</td>
               <td className={t.type === "income" ? "income-amount" : "expense-amount"}>
-                {t.type === "income" ? "+" : "-"}${t.amount}
+                {t.type === "income" ? "+" : "-"}{formatMoney(t.amount)}
               </td>
               <td>
                 <button className="delete-btn" onClick={() => onDelete(t.id, t.description)}>
